@@ -1,29 +1,29 @@
 sap.ui.define([
-   "sap/ui/core/mvc/Controller",
-   "sap/m/MessageToast",
-   "sap/ui/model/json/JSONModel",
-   "sap/ui/model/resource/ResourceModel"
+    "sap/ui/core/mvc/Controller",
+    "sap/m/MessageToast",
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/model/resource/ResourceModel"
 ], function (Controller, MessageToast, JSONModel, ResourceModel) {
     "use strict";
     return Controller.extend("sap.ui.demo.wt.controller.App", {
-        
+
         //onInit is invoked when the controller is created.
         onInit: function () {
-             var oData = {
+            var oData = {
                 recipient: {
                     name: "World"
                 }
             };
             var oModel = new JSONModel(oData);
             this.getView().setModel(oModel);
-            
-            //the bundle name determines the location 
-            var i18nModel = new ResourceModel({
-              bundleName: "sap.ui.demo.wt.i18n.i18n"
-            })
-            this.getView().setModel(i18nModel, "i18n");
+
+            //the bundle name determines the location not needed if a manifest is set.
+            // var i18nModel = new ResourceModel({
+            //    bundleName: "sap.ui.demo.wt.i18n.i18n"
+            //  })
+            //  this.getView().setModel(i18nModel, "i18n");
         },
-        
+
         onShowHello: function () {
             // read msg from i18n model
             var oBundle = this.getView().getModel("i18n").getResourceBundle();
